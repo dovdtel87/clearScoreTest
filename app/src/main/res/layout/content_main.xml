@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +8,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
-
     <com.example.davidmartinezgarcia.clearscoreproject.feature.common.view.donut.DonutView
+        android:id="@+id/donut_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:innerCircleMargin="30"
@@ -20,6 +21,31 @@
         app:innerCircleColor_0_90="@color/orange"
         app:innerCircleColor_90_180="@color/yellow"
         app:innerCircleColor_180_270="@color/light_green"
-        app:innerCircleColor_270_360="@color/green"/>
+        app:innerCircleColor_270_360="@color/green"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
-</android.support.constraint.ConstraintLayout>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        tools:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_score"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textSize="28sp"
+
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="Your credit score is\n 327\n out of 700"/>
+
+</RelativeLayout>

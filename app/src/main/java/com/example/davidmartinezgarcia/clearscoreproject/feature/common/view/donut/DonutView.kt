@@ -44,6 +44,7 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
     private var innerArcEndingX : Float = 0f
     private var innerArcStartingY : Float = 0f
     private var innerArcEndingY : Float = 0f
+    private var angleToComplete : Float = 0f
 
     init {
         initialiseAttributes()
@@ -65,11 +66,17 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         typedArray.recycle()
     }
 
+    fun setPercentage(percentage : Float) {
+        angleToComplete = transformPercentageToDegrees(percentage)
+    }
+
+    private fun transformPercentageToDegrees(percentage : Float) : Float {
+       return percentage * 360
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         initializeParameters()
-
-        val angleToComplete = 275f //TODO integrate with score result
 
         drawOuterCircle(canvas)
         drawInnerCircle(canvas, angleToComplete)

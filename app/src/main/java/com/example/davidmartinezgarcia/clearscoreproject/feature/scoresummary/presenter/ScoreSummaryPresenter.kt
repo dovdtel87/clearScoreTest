@@ -3,6 +3,7 @@ package com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.p
 import com.example.davidmartinezgarcia.clearscoreproject.feature.common.presenter.BasePresenter
 import com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.ScoreSummaryContract
 import com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.repository.ScoreSummaryRepositoryInterface
+import com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.repository.exceptions.MaxScoreZeroException
 import com.example.davidmartinezgarcia.clearscoreproject.model.ScoreSummary
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
@@ -16,10 +17,14 @@ class ScoreSummaryPresenter(private var view : ScoreSummaryContract.View ,
     private var disposable : CompositeDisposable = CompositeDisposable()
 
     override fun retrieveScore() {
+        view.showProgress()
         disposable.add(scoreSummaryRepository.retrieveScores()
                 .subscribe(Consumer<ScoreSummary> { scoreSummary ->
-                    if (scoreSummary != null) {
+                    view.hideProgress()
+                    if (scoreSummary != null && scoreSummary.creditReportInfo.maxScoreValue != 0) {
                         view.showScore(scoreSummary)
+                    } else {
+                        view.onApiError(MaxScoreZeroException())
                     }
                 }, ApiErrorAction(view)))
     }

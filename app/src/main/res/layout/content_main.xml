@@ -8,5 +8,18 @@
     tools:showIn="@layout/activity_main">
 
 
+    <com.example.davidmartinezgarcia.clearscoreproject.feature.common.view.donut.DonutView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:innerCircleMargin="30"
+        app:outerCircleMargin="25"
+        app:innerArcStartingAngle="270"
+        app:strokeInnerCircle="20"
+        app:strokeOuterCircle="10"
+        app:outerCircleColor="@color/black"
+        app:innerCircleColor_0_90="@color/orange"
+        app:innerCircleColor_90_180="@color/yellow"
+        app:innerCircleColor_180_270="@color/light_green"
+        app:innerCircleColor_270_360="@color/green"/>
 
 </android.support.constraint.ConstraintLayout>

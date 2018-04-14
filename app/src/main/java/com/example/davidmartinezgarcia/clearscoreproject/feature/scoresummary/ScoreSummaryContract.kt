@@ -7,7 +7,9 @@ import com.example.davidmartinezgarcia.clearscoreproject.model.ScoreSummary
  */
 class ScoreSummaryContract {
     interface View  :  com.example.davidmartinezgarcia.clearscoreproject.feature.common.view.View {
-       fun showScore(value : ScoreSummary)
+        fun showScore(value : ScoreSummary)
+        fun showProgress()
+        fun hideProgress()
     }
     interface Presenter : com.example.davidmartinezgarcia.clearscoreproject.feature.common.presenter.Presenter {
         fun retrieveScore()

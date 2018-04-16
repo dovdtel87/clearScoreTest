@@ -42,19 +42,20 @@ I provided a `UITest` class of the view developed.
 The gradle file has 2 build types, one for debug an other for production, both of them refer to the same API URL (this should be improved including signing options
 for the production version)
 
+# Scrum 
 In order to manage this project I followed the principles of _Scrum Methodology_ identifying the following tasks and estimating them as follows:
 
-- **TaskA**: Setup the project -> Story Points: **3**
-- **TaskB**: Establish the MVP architecture & Network Calls -> Story Points: **5**
-- **TaskC**: Design the DonutView -> Story Points: **8**
-- **TaskD**: Integrate API response with Donut View -> Story Points: **3**
-- **TaskE**: Internationalization -> Story Points: **1**
-- **TaskF**: UnitTest of the presenter -> Story Points: **2**
-- **TaskG**: UITest of the view -> Story Points: **3**
+-[x] **TaskA**: Setup the project -> Story Points: **3**
+-[x] **TaskB**: Establish the MVP architecture & Network Calls -> Story Points: **5**
+-[x] **TaskC**: Design the DonutView -> Story Points: **8**
+-[x] **TaskD**: Integrate API response with Donut View -> Story Points: **3**
+-[x] **TaskE**: Internationalization -> Story Points: **1**
+-[x] **TaskF**: UnitTest of the presenter -> Story Points: **2**
+-[x] **TaskG**: UITest of the view -> Story Points: **3**
 
 Other tasks identified not implemented:
 
-- **TaskH**: Animation of the inner circle
-- **TaskI**: Define custom styles for the app
-- **TaskJ**: Implement `Dagger` to inject the presenter
-- **TaskK**: Implement persistence for no network
+-[ ] **TaskH**: Animation of the inner circle
+-[ ] **TaskI**: Define custom styles for the app
+-[ ] **TaskJ**: Implement `Dagger` to inject the presenter
+-[ ] **TaskK**: Implement persistence for not network

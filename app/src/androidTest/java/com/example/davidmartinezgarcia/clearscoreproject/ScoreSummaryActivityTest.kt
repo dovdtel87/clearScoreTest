@@ -17,10 +17,11 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class ScoreSummaryActivityTest() {
+class ScoreSummaryActivityTest {
 
-    @Rule @JvmField
-    public var mActivityRule: ActivityTestRule<ScoreSummaryActivity> = ActivityTestRule(ScoreSummaryActivity::class.java)
+    @Rule
+    @JvmField
+    var mActivityRule: ActivityTestRule<ScoreSummaryActivity> = ActivityTestRule(ScoreSummaryActivity::class.java)
 
 
     @Test

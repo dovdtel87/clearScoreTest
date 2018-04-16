@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class ScoreSummaryRepository : ScoreSummaryRepositoryInterface {
 
-    override fun retrieveScores() : Observable<ScoreSummary> {
+    override fun retrieveScores(): Observable<ScoreSummary> {
         return ScoreClient.getInstance()
                 .getScore()
                 .subscribeOn(Schedulers.io())

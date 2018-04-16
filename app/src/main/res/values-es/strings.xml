@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="your_credit_score_is">Tu credito es"</string>
+    <string name="out_off">sobre %d"</string>
+    <string name="api_error">Error recibiendo informacion de la API</string>
+    <string name="api_error_max_score_0">Error recibiendo el máximo score</string>
+
+</resources>

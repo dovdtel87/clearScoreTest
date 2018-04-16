@@ -1,11 +1,13 @@
 /**
  * Extremely simple wrapper around SpannableStringBuilder to make the API more logical and less awful. Apache 2 licensed.
+ *
  * @see https://gist.github.com/JakeWharton/11274467
  */
 
 package com.example.davidmartinezgarcia.clearscoreproject.service;
 
 import android.text.SpannableStringBuilder;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 

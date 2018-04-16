@@ -7,5 +7,5 @@ import io.reactivex.Observable
  * Created by david.martinezgarcia on 13/04/2018.
  */
 interface ScoreSummaryRepositoryInterface {
-    fun retrieveScores() : Observable<ScoreSummary>
+    fun retrieveScores(): Observable<ScoreSummary>
 }

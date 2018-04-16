@@ -25,6 +25,8 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         val COLOR_LIGHT_GREEN : Int = R.color.light_green
         @ColorRes
         val COLOR_GREEN : Int = R.color.green
+
+        const val MAXIMUM_ANGLE : Int = 360
     }
 
     private var innerCircleMargin: Float = 0f
@@ -71,7 +73,7 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
     }
 
     private fun transformPercentageToDegrees(percentage : Float) : Float {
-       return percentage * 360
+       return percentage * MAXIMUM_ANGLE
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -98,7 +100,7 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         paint.setStrokeWidth(strokeOuterCircle);
         paint.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(outerCircleX, outerCircleY, outerCircleRadius, paint)
-        invalidate()
+        //invalidate()
     }
 
     private fun drawInnerCircle(canvas : Canvas, angleToComplete : Float) {
@@ -109,7 +111,7 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         val oval = RectF()
         oval.set(innerArcStartingX, innerArcStartingY, innerArcEndingX, innerArcEndingY)
         canvas.drawArc(oval, innerArcStartingAngle, angleToComplete, false, paint)
-        invalidate()
+        //invalidate()
     }
 
     private fun getInnerCircleShader() : Shader {

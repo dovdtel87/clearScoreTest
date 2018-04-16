@@ -15,15 +15,21 @@ import com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.pr
 import com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.repository.ScoreSummaryRepository
 import com.example.davidmartinezgarcia.clearscoreproject.feature.scoresummary.repository.exceptions.MaxScoreZeroException
 import com.example.davidmartinezgarcia.clearscoreproject.model.ScoreSummary
+import com.example.davidmartinezgarcia.clearscoreproject.service.GsonFactory
 import com.example.davidmartinezgarcia.clearscoreproject.service.TextFormatService
 import kotlinx.android.synthetic.main.content_main.*
 
-class ScoreSummaryView : AppCompatActivity(), ScoreSummaryContract.View {
+class ScoreSummaryActivity : AppCompatActivity(), ScoreSummaryContract.View {
 
-    lateinit var mPresenter : ScoreSummaryContract.Presenter
-    lateinit var mProgressBar : ProgressBar
+    companion object {
+        const val STATE_SCORE_SUMMARY = "state.score.summary"
+    }
+
+    lateinit var mPresenter: ScoreSummaryContract.Presenter
+    lateinit var mProgressBar: ProgressBar
     lateinit var mDonutView: DonutView
     lateinit var mScoreText: TextView
+    lateinit var mScoreSummary: ScoreSummary
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +40,17 @@ class ScoreSummaryView : AppCompatActivity(), ScoreSummaryContract.View {
         mProgressBar = progress_bar
         mDonutView = donut_view
         mScoreText = text_score
+        mPresenter = ScoreSummaryPresenter(this, ScoreSummaryRepository())
 
-        initNetworkCalls();
+        if (savedInstanceState != null) {
+            mScoreSummary = GsonFactory.getInstance().fromJson(savedInstanceState.getString(STATE_SCORE_SUMMARY), ScoreSummary::class.java)
+            showScore(mScoreSummary)
+        } else {
+            initNetworkCalls();
+        }
     }
 
     private fun initNetworkCalls() {
-        mPresenter = ScoreSummaryPresenter(this, ScoreSummaryRepository()) //TODO INTEGRATE WITH DAGGER
         mPresenter.retrieveScore()
     }
 
@@ -52,8 +63,9 @@ class ScoreSummaryView : AppCompatActivity(), ScoreSummaryContract.View {
     }
 
     override fun showScore(value: ScoreSummary) {
-        val score : Int = value.creditReportInfo.score
-        val maxScore : Int = value.creditReportInfo.maxScoreValue
+        mScoreSummary = value
+        val score: Int = mScoreSummary.creditReportInfo.score
+        val maxScore: Int = mScoreSummary.creditReportInfo.maxScoreValue
         mScoreText.text = TextFormatService.formatScore(this, score, maxScore)
         mDonutView.setPercentage(score.toFloat() / maxScore.toFloat())
         mScoreText.visibility = VISIBLE
@@ -62,13 +74,18 @@ class ScoreSummaryView : AppCompatActivity(), ScoreSummaryContract.View {
 
     override fun onApiError(exception: Throwable) {
         hideProgress()
-        if(exception is MaxScoreZeroException) {
+        if (exception is MaxScoreZeroException) {
             mScoreText.text = getString(R.string.api_error_max_score_0)
         } else {
             mScoreText.text = getString(R.string.api_error)
         }
 
         mScoreText.visibility = VISIBLE
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putString(STATE_SCORE_SUMMARY, GsonFactory.getInstance().toJson(mScoreSummary))
+        super.onSaveInstanceState(outState)
     }
 
     override fun onDestroy() {

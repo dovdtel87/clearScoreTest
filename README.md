@@ -45,17 +45,17 @@ for the production version)
 # Scrum 
 In order to manage this project I followed the principles of _Scrum Methodology_ identifying the following tasks and estimating them as follows:
 
--[x] **TaskA**: Setup the project -> Story Points: **3**
--[x] **TaskB**: Establish the MVP architecture & Network Calls -> Story Points: **5**
--[x] **TaskC**: Design the DonutView -> Story Points: **8**
--[x] **TaskD**: Integrate API response with Donut View -> Story Points: **3**
--[x] **TaskE**: Internationalization -> Story Points: **1**
--[x] **TaskF**: UnitTest of the presenter -> Story Points: **2**
--[x] **TaskG**: UITest of the view -> Story Points: **3**
+-[x] **TaskA**: Setup the project -> Story Points: **3**  
+-[x] **TaskB**: Establish the MVP architecture & Network Calls -> Story Points: **5**  
+-[x] **TaskC**: Design the DonutView -> Story Points: **8**  
+-[x] **TaskD**: Integrate API response with Donut View -> Story Points: **3**  
+-[x] **TaskE**: Internationalization -> Story Points: **1**  
+-[x] **TaskF**: UnitTest of the presenter -> Story Points: **2**  
+-[x] **TaskG**: UITest of the view -> Story Points: **3**  
 
 Other tasks identified not implemented:
 
--[ ] **TaskH**: Animation of the inner circle
--[ ] **TaskI**: Define custom styles for the app
--[ ] **TaskJ**: Implement `Dagger` to inject the presenter
--[ ] **TaskK**: Implement persistence for not network
+-[ ] **TaskH**: Animation of the inner circle  
+-[ ] **TaskI**: Define custom styles for the app  
+-[ ] **TaskJ**: Implement `Dagger` to inject the presenter  
+-[ ] **TaskK**: Implement persistence for not network  

@@ -2,12 +2,11 @@ package com.example.davidmartinezgarcia.clearscoreproject.feature.common.view.do
 
 import android.content.Context
 import android.graphics.*
+import android.support.annotation.ColorRes
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
-import android.support.v4.content.ContextCompat
 import com.example.davidmartinezgarcia.clearscoreproject.R
-import android.graphics.SweepGradient
-import android.support.annotation.ColorRes
 
 /**
  * Created by david.martinezgarcia on 14/04/2018.
@@ -16,37 +15,37 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
 
     companion object {
         @ColorRes
-        val COLOR_BLACK : Int = R.color.black
+        val COLOR_BLACK: Int = R.color.black
         @ColorRes
-        val COLOR_ORANGE : Int = R.color.orange
+        val COLOR_ORANGE: Int = R.color.orange
         @ColorRes
-        val COLOR_YELLOW : Int = R.color.yellow
+        val COLOR_YELLOW: Int = R.color.yellow
         @ColorRes
-        val COLOR_LIGHT_GREEN : Int = R.color.light_green
+        val COLOR_LIGHT_GREEN: Int = R.color.light_green
         @ColorRes
-        val COLOR_GREEN : Int = R.color.green
+        val COLOR_GREEN: Int = R.color.green
 
-        const val MAXIMUM_ANGLE : Int = 360
+        const val MAXIMUM_ANGLE: Int = 360
     }
 
     private var innerCircleMargin: Float = 0f
     private var outerCircleMargin: Float = 0f
-    private var strokeInnerCircle : Float = 0f
-    private var strokeOuterCircle : Float = 0f
+    private var strokeInnerCircle: Float = 0f
+    private var strokeOuterCircle: Float = 0f
     private var outerCircleColor: Int = 0
     private var innerCircleColor_0_90: Int = 0
     private var innerCircleColor_90_180: Int = 0
     private var innerCircleColor_180_270: Int = 0
     private var innerCircleColor_270_360: Int = 0
     private var innerArcStartingAngle = 0f
-    private var outerCircleX : Float = 0f
-    private var outerCircleY : Float = 0f
-    private var outerCircleRadius : Float = 0f
-    private var innerArcStartingX : Float = 0f
-    private var innerArcEndingX : Float = 0f
-    private var innerArcStartingY : Float = 0f
-    private var innerArcEndingY : Float = 0f
-    private var angleToComplete : Float = 0f
+    private var outerCircleX: Float = 0f
+    private var outerCircleY: Float = 0f
+    private var outerCircleRadius: Float = 0f
+    private var innerArcStartingX: Float = 0f
+    private var innerArcEndingX: Float = 0f
+    private var innerArcStartingY: Float = 0f
+    private var innerArcEndingY: Float = 0f
+    private var angleToComplete: Float = 0f
 
     init {
         initialiseAttributes()
@@ -68,12 +67,12 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         typedArray.recycle()
     }
 
-    fun setPercentage(percentage : Float) {
+    fun setPercentage(percentage: Float) {
         angleToComplete = transformPercentageToDegrees(percentage)
     }
 
-    private fun transformPercentageToDegrees(percentage : Float) : Float {
-       return percentage * MAXIMUM_ANGLE
+    private fun transformPercentageToDegrees(percentage: Float): Float {
+        return percentage * MAXIMUM_ANGLE
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -94,16 +93,15 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         innerArcEndingY = outerCircleY + outerCircleRadius - innerCircleMargin
     }
 
-    private fun drawOuterCircle(canvas : Canvas) {
+    private fun drawOuterCircle(canvas: Canvas) {
         val paint = Paint()
         paint.color = outerCircleColor
         paint.setStrokeWidth(strokeOuterCircle);
         paint.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(outerCircleX, outerCircleY, outerCircleRadius, paint)
-        //invalidate()
     }
 
-    private fun drawInnerCircle(canvas : Canvas, angleToComplete : Float) {
+    private fun drawInnerCircle(canvas: Canvas, angleToComplete: Float) {
         val paint = Paint()
         paint.setStyle(Paint.Style.STROKE);
         paint.shader = getInnerCircleShader()
@@ -111,10 +109,9 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
         val oval = RectF()
         oval.set(innerArcStartingX, innerArcStartingY, innerArcEndingX, innerArcEndingY)
         canvas.drawArc(oval, innerArcStartingAngle, angleToComplete, false, paint)
-        //invalidate()
     }
 
-    private fun getInnerCircleShader() : Shader {
+    private fun getInnerCircleShader(): Shader {
         val stopsGradient = floatArrayOf(0f, 0.25f, 0.50f, 0.75f)
         val colorsGradient = intArrayOf(
                 innerCircleColor_0_90,

@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">ClearScoreProject</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">ClearScoreProject</string>
 
     <string name="your_credit_score_is">Your credit score is"</string>
     <string name="out_off">out of %d"</string>
-
     <string name="api_error">Error retrieving API info</string>
     <string name="api_error_max_score_0">Error retrieving max score</string>
 

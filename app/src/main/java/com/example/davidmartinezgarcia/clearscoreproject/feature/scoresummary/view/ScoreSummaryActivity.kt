@@ -25,11 +25,11 @@ class ScoreSummaryActivity : AppCompatActivity(), ScoreSummaryContract.View {
         const val STATE_SCORE_SUMMARY = "state.score.summary"
     }
 
-    lateinit var mPresenter: ScoreSummaryContract.Presenter
-    lateinit var mProgressBar: ProgressBar
-    lateinit var mDonutView: DonutView
-    lateinit var mScoreText: TextView
-    lateinit var mScoreSummary: ScoreSummary
+    private lateinit var mPresenter: ScoreSummaryContract.Presenter
+    private lateinit var mProgressBar: ProgressBar
+    private lateinit var mDonutView: DonutView
+    private lateinit var mScoreText: TextView
+    private lateinit var mScoreSummary: ScoreSummary
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +42,14 @@ class ScoreSummaryActivity : AppCompatActivity(), ScoreSummaryContract.View {
         mScoreText = text_score
         mPresenter = ScoreSummaryPresenter(this, ScoreSummaryRepository())
 
-        if (savedInstanceState != null) {
+        if (savedInstanceState?.getString(STATE_SCORE_SUMMARY) != null) {
             mScoreSummary = GsonFactory.getInstance().fromJson(savedInstanceState.getString(STATE_SCORE_SUMMARY), ScoreSummary::class.java)
+        }
+
+        if (this::mScoreSummary.isInitialized) {
             showScore(mScoreSummary)
         } else {
-            initNetworkCalls();
+            initNetworkCalls()
         }
     }
 
@@ -84,7 +87,9 @@ class ScoreSummaryActivity : AppCompatActivity(), ScoreSummaryContract.View {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putString(STATE_SCORE_SUMMARY, GsonFactory.getInstance().toJson(mScoreSummary))
+        if (this::mScoreSummary.isInitialized) {
+            outState?.putString(STATE_SCORE_SUMMARY, GsonFactory.getInstance().toJson(mScoreSummary))
+        }
         super.onSaveInstanceState(outState)
     }
 

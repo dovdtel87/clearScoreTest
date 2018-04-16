@@ -10,7 +10,7 @@ class GsonFactory {
     companion object {
         private val GSON = GsonBuilder().create()
 
-        fun getInstance() : Gson {
+        fun getInstance(): Gson {
             return GSON
         }
     }

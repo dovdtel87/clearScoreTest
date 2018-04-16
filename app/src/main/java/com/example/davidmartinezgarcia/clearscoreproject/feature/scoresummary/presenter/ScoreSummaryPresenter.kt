@@ -29,9 +29,6 @@ class ScoreSummaryPresenter(private var view : ScoreSummaryContract.View ,
                 }, ApiErrorAction(view)))
     }
 
-    override fun onViewCreated() {
-    }
-
     override fun onViewDestroyed() {
         disposable.clear()
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="DonutView">
-        <attr name="outerCircleMargin" format="float"/>
-        <attr name="innerCircleMargin" format="float"/>
+        <attr name="outerCircleMargin" format="dimension"/>
+        <attr name="innerCircleMargin" format="dimension"/>
+        <attr name="strokeInnerCircle" format="dimension"/>
+        <attr name="strokeOuterCircle" format="dimension"/>
         <attr name="innerArcStartingAngle" format="float"/>
-        <attr name="strokeInnerCircle" format="float"/>
-        <attr name="strokeOuterCircle" format="float"/>
         <attr name="outerCircleColor" format="color"/>
         <attr name="innerCircleColor_0_90" format="color"/>
         <attr name="innerCircleColor_90_180" format="color"/>

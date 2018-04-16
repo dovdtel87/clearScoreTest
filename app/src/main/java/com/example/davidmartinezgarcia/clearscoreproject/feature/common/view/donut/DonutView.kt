@@ -54,10 +54,11 @@ class DonutView(context: Context, private val attributeSet: AttributeSet) : View
 
     private fun initialiseAttributes() {
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.DonutView)
-        innerCircleMargin = typedArray.getFloat(R.styleable.DonutView_innerCircleMargin, 30f)
-        outerCircleMargin = typedArray.getFloat(R.styleable.DonutView_outerCircleMargin, 0f)
-        strokeInnerCircle = typedArray.getFloat(R.styleable.DonutView_strokeInnerCircle, 20f)
-        strokeOuterCircle = typedArray.getFloat(R.styleable.DonutView_strokeOuterCircle, 10f)
+
+        innerCircleMargin = java.lang.Float.valueOf(typedArray.getDimension(R.styleable.DonutView_innerCircleMargin, 30f))
+        outerCircleMargin = java.lang.Float.valueOf(typedArray.getDimension(R.styleable.DonutView_outerCircleMargin, 0f))
+        strokeInnerCircle = java.lang.Float.valueOf(typedArray.getDimension(R.styleable.DonutView_strokeInnerCircle, 20f))
+        strokeOuterCircle = java.lang.Float.valueOf(typedArray.getDimension(R.styleable.DonutView_strokeOuterCircle, 10f))
         outerCircleColor = typedArray.getColor(R.styleable.DonutView_outerCircleColor, ContextCompat.getColor(context, COLOR_BLACK))
         innerCircleColor_0_90 = typedArray.getColor(R.styleable.DonutView_innerCircleColor_0_90, ContextCompat.getColor(context, COLOR_ORANGE))
         innerCircleColor_90_180 = typedArray.getColor(R.styleable.DonutView_innerCircleColor_90_180, ContextCompat.getColor(context, COLOR_YELLOW))
